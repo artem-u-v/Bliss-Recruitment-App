@@ -15,3 +15,6 @@ let APIEndpointURL: String = "https://private-anon-60cd111e9f-blissrecruitmentap
 let kErrorDomain = "bra.network"
 let kErrorNetworkNoData = 1
 let kErrorNetworkParsingJSON = 2
+
+
+let kAnimationSpeed = 0.4
