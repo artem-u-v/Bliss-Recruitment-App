@@ -1,5 +1,5 @@
 //
-//  APIHandler.swift
+//  APIOperation.swift
 //  BRA
 //
 //  Created by Artem Umanets on 28/07/2017.
@@ -9,8 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-
-typealias CompletionBlock = (_ result:AnyObject?, _ error: Error?) -> Void
+typealias CompletionBlock = (_ result:Any?, _ error: Error?) -> Void
 
 class APIOperation{
     let request : APIRequestModel
@@ -20,8 +19,9 @@ class APIOperation{
     }
     
     internal func makeRequest(completion:@escaping CompletionBlock){
-        var urlRequest = URLRequest(url: self.request.requestURL)
-        urlRequest.httpMethod = self.request.method.rawValue
+        //var urlRequest = URLRequest(url: self.request.requestURL)
+        //urlRequest.httpMethod = self.request.method.rawValue
+        var urlRequest = self.request.getRequest()
         let session = URLSession.shared
 
         let task = session.dataTask(with: urlRequest) { data, response, error in
@@ -36,7 +36,6 @@ class APIOperation{
                 return
             }
             
-            //do {
             let json = JSON(data: responseData)
             guard json.error == nil else {
                 let erroParsingJSON = NSError(domain:kErrorDomain, code:kErrorNetworkParsingJSON, userInfo:[NSLocalizedDescriptionKey:"Could not parse json response.", NSLocalizedFailureReasonErrorKey : json.error!.localizedDescription])
@@ -45,36 +44,18 @@ class APIOperation{
             }
             let responseModel = self.createModel(data: json)
             completion(responseModel, nil)
-            
-                /*
-                guard let todo1 = try JSONSerialization.jsonObject(with: responseData, options: [])
-                    as? [Any] else {
-                        print("error trying to convert data to JSON")
-                        return
-                }
-                
-                guard let todo = try JSONSerialization.jsonObject(with: responseData, options: [])
-                    as? [String: Any] else {
-                        print("error trying to convert data to JSON")
-                        return
-                }
-
-                print("The todo is: " + todo.description)
-                guard let todoTitle = todo["title"] as? String else {
-                    print("Could not get todo title from JSON")
-                    return
-                }
-                print("The title is: " + todoTitle)*/
-            /*} catch  {
-                print("error trying to convert data to JSON")
-                return
-            }*/
         }
         task.resume()
     }
     
+    internal func performOperation<T : Any>(completion:@escaping (_ result:T?, _ error: Error?) -> Void) {
+        self.makeRequest { (result, error) in
+            completion(result as? T, error)
+        }
+    }
+    
     // Hook methods
-    internal func createModel(data:JSON?) -> AnyObject{
+    internal func createModel(data:JSON) -> Any{
         preconditionFailure("Unimplemented Method: This method needs to be overriden by a concrete subscass")
     }
 }
