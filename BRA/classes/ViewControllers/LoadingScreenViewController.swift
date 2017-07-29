@@ -35,9 +35,7 @@ class LoadingScreenViewController: UIViewController {
                 })
                 return
             }
-            
-            // navigate to next screen
-            status?.printDescription()
+            self.performSegue(withIdentifier: "Navigate to Question List", sender: nil)
         }
     }
     

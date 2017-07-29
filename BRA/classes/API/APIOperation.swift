@@ -19,9 +19,7 @@ class APIOperation{
     }
     
     internal func makeRequest(completion:@escaping CompletionBlock){
-        //var urlRequest = URLRequest(url: self.request.requestURL)
-        //urlRequest.httpMethod = self.request.method.rawValue
-        var urlRequest = self.request.getRequest()
+        let urlRequest = self.request.getRequest()
         let session = URLSession.shared
 
         let task = session.dataTask(with: urlRequest) { data, response, error in

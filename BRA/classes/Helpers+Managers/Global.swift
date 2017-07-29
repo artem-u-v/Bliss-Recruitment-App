@@ -17,4 +17,9 @@ let kErrorNetworkNoData = 1
 let kErrorNetworkParsingJSON = 2
 
 
+/* UI */
 let kAnimationSpeed = 0.4
+
+/* Misc Config */
+let kNumberOfQuestionPerRequest = 10
+let kSearchDelay = 0.5

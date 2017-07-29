@@ -4,3 +4,7 @@
 
 "LoadingScreen.ServerStatusNotOK" = "Server status is not OK, please try again later.";
 "LoadingScreen.Retry" = "Retry";
+
+"QuestionList.Title" = "Questions";
+"QuestionList.NoData" = "No Data";
+"QuestionList.Share" = "Share";
