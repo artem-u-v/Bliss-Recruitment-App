@@ -18,15 +18,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        
-        let listQueries = OperationListQuestions(offset: 0, limit: 10)
-        listQueries.performOperation { (result:QuestionModel?, error:Error?) in
+        /*let listQueries = OperationListQuestions(offset: 0, limit: 10)
+        listQueries.performOperation { (result:[QuestionModel]?, error:Error?) in
             guard error == nil else{
                 print("An error occurred processing request:\(error!.localizedDescription)")
                 return
             }
-            print("Successful request")
-        }
+
+            for question in result!{
+                print("=============")
+                question.printDescription()
+            }
+        }*/
+        
+        /*let getQuestion = OperationGetQuestion(questionId: 3)
+        getQuestion.performOperation { (result:QuestionModel?, error:Error?) in
+            guard error == nil else{
+                print("An error occurred processing request:\(error!.localizedDescription)")
+                return
+            }
+            result?.printDescription()
+        }*/
+        
+        /*let shareOperation = OperationShare(email: "artem.u.v@gmail.com", url: "http:\\www.google.com")
+        shareOperation.performOperation { (status:StatusModel?, error:Error?) in
+            guard error == nil else{
+                print("An error occurred processing request:\(error!.localizedDescription)")
+                return
+            }
+            status?.printDescription()
+        }*/
+        
+        /*let healthOperatoin = OperationGetHealthStatus()
+        healthOperatoin.performOperation { (status:StatusModel?, error:Error?) in
+            guard error == nil else{
+                print("An error occurred processing request:\(error!.localizedDescription)")
+                return
+            }
+            status?.printDescription()
+        }*/
         return true
     }
 
