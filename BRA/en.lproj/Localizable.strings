@@ -1,0 +1,6 @@
+/* 
+  Localizable.strings[EN]
+*/
+
+"LoadingScreen.ServerStatusNotOK" = "Server status is not OK, please try again later.";
+"LoadingScreen.Retry" = "Retry";
