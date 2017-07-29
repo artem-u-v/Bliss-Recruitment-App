@@ -18,6 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        
+        let listQueries = OperationListQuestions(offset: 0, limit: 10)
+        listQueries.performOperation { (result:QuestionModel?, error:Error?) in
+            guard error == nil else{
+                print("An error occurred processing request:\(error!.localizedDescription)")
+                return
+            }
+            print("Successful request")
+        }
         return true
     }
 
