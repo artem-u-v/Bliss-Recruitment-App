@@ -50,7 +50,9 @@ class APIOperation{
     
     internal func performOperation<T : Any>(completion:@escaping (_ result:T?, _ error: Error?) -> Void) {
         self.makeRequest { (result, error) in
-            completion(result as? T, error)
+            DispatchQueue.main.async {
+                completion(result as? T, error)
+            }
         }
     }
     
