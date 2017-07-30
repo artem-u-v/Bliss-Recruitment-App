@@ -127,6 +127,14 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
         self.performSearch()
     }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBarTextDidEndEditing(searchBar)
+    }
+    
     // MARK: Actions
     func searchTimerTick(timer:Timer){
         self.timerSearch = nil
