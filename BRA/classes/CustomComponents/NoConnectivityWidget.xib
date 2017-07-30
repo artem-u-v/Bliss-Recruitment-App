@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYS-LN-FkV" customClass="NoConnectivityWidget" customModule="BRA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="280" height="140"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aenean lacinia bibendum nulla sed consectetur. Donec id elit non mi porta gravida at eget metus." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dke-e3-Phf">
+                    <rect key="frame" x="10" y="68.5" width="260" height="61.5"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoInternet" translatesAutoresizingMaskIntoConstraints="NO" id="jkQ-JE-qYq">
+                    <rect key="frame" x="115" y="10" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="FGA-KW-YMp"/>
+                        <constraint firstAttribute="width" constant="50" id="pWX-vy-pMi"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="jkQ-JE-qYq" firstAttribute="top" secondItem="UYS-LN-FkV" secondAttribute="top" constant="10" id="14Y-tF-jvq"/>
+                <constraint firstItem="Dke-e3-Phf" firstAttribute="top" secondItem="jkQ-JE-qYq" secondAttribute="bottom" constant="8" id="P2x-Ga-wPM"/>
+                <constraint firstAttribute="width" constant="280" id="UL3-nG-FUI"/>
+                <constraint firstItem="Dke-e3-Phf" firstAttribute="leading" secondItem="UYS-LN-FkV" secondAttribute="leading" constant="10" id="Ywd-rq-4u9"/>
+                <constraint firstAttribute="bottom" secondItem="Dke-e3-Phf" secondAttribute="bottom" constant="10" id="hte-Gz-8rv"/>
+                <constraint firstAttribute="height" constant="140" id="qXI-Ff-RbV"/>
+                <constraint firstAttribute="trailing" secondItem="Dke-e3-Phf" secondAttribute="trailing" constant="10" id="sX3-6n-AME"/>
+                <constraint firstItem="jkQ-JE-qYq" firstAttribute="centerX" secondItem="UYS-LN-FkV" secondAttribute="centerX" id="xQe-xO-gF4"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="labelErrorMessage" destination="Dke-e3-Phf" id="fqT-Dp-ezn"/>
+            </connections>
+            <point key="canvasLocation" x="-315" y="114"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="NoInternet" width="50" height="50"/>
+    </resources>
+</document>
