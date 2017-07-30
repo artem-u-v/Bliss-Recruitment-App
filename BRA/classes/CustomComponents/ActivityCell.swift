@@ -17,6 +17,7 @@ class ActivityCell : UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         self.activityLoader = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         self.activityLoader.center = CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0)
         self.activityLoader.startAnimating()

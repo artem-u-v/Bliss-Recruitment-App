@@ -35,12 +35,12 @@ class DynamicModal: NSObject, UIGestureRecognizerDelegate {
     class func show(modalView view: UIView) -> DynamicModal {
         let modal = DynamicModal()
         modal.show(modalView: view)
-        
         return modal
     }
     
     func show(modalView view: UIView) {
         let inView = UIApplication.shared.delegate?.window! as UIView!
+        
         self.view = view
         self.backgroundView.modal = self
         

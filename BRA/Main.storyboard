@@ -98,7 +98,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7uP-G7-h26">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="7uP-G7-h26">
                                             <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
@@ -419,7 +419,7 @@
         <image name="ButtonVote" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="FUB-fe-KAV"/>
         <segue reference="eoS-GG-Ga1"/>
-        <segue reference="qy1-vq-zTr"/>
     </inferredMetricsTieBreakers>
 </document>

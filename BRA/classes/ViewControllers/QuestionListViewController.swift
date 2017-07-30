@@ -94,6 +94,10 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
             if indexPath.row < self.questions.count{
                 let question = self.questions[indexPath.row]
                 cell = tableView.dequeueReusableCell(withIdentifier: "Question Cell")
+                cell.imageView?.image = UIImage(named: "DefaultThumbnail")
+                cell.imageView?.loadImageAsync(withUrl: question.thumbURL, completion: { (image, error) in
+                    
+                })
                 cell.textLabel?.text = String(question.id) + " " + question.question
             }else{
                 cell = tableView.dequeueReusableCell(withIdentifier: "Loader Cell")

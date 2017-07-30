@@ -13,8 +13,7 @@ let imageCache = NSCache<NSString, AnyObject>()
 
 extension UIImageView {
     
-    func loadImageAsync(withUrl url: URL, completion:@escaping (_ image:UIImage?, _ error:Error?) -> Void) {
-        self.image = nil
+    func loadImageAsync(withUrl url: URL, completion:@escaping(_ image:UIImage?, _ error:Error?) -> Void) {
         
         // check cached image
         if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) as? UIImage {
