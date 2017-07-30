@@ -46,13 +46,25 @@ class APIOperation{
         task.resume()
     }
     
-    internal func performOperation<T : Any>(completion:@escaping (_ result:T?, _ error: Error?) -> Void) {
+    internal func performOperation<T : Any>(onSuccess:@escaping (_ result:T) -> Void, onError:@escaping (_ error: Error) -> Void) {
+        self.makeRequest { (result, error) in
+            DispatchQueue.main.async {
+                guard error == nil else{
+                    onError(error!)
+                    return
+                }
+                onSuccess(result as! T)
+            }
+        }
+    }
+    
+    /*internal func performOperation<T : Any>(completion:@escaping (_ result:T?, _ error: Error?) -> Void) {
         self.makeRequest { (result, error) in
             DispatchQueue.main.async {
                 completion(result as? T, error)
             }
         }
-    }
+    }*/
     
     // Hook methods
     internal func createModel(data:JSON) -> Any{

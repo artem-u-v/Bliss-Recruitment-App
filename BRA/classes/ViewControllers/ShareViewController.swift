@@ -84,14 +84,15 @@ class ShareViewController: UITableViewController {
         self.tableView.reloadData()
         
         let shareOperation = OperationShare(email: self.textCell.textField.text!, url: self.shareURL)
-        shareOperation.performOperation { (status:StatusModel?, error:Error?) in
-            guard error == nil else{
-                print("An error occurred processing request: \(error!.localizedDescription)")
-                return
-            }
+        shareOperation.performOperation(onSuccess: { (status:StatusModel) in
             self.isShared = true
             self.isSharing = false
             self.tableView.reloadData()
+
+        }) { (error:Error) in
+            RetryWidget.show(message: loc("Global.APINetworkError"), onRetry: {
+                self.performShare()
+            })
         }
     }
 }

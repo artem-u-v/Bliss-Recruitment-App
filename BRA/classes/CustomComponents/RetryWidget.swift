@@ -15,15 +15,24 @@ class RetryWidget: UIView {
     
     private var retryHandler: (() -> Void)!
     
-    static func createWidget(message:String, retryHandler: @escaping () -> Void) -> RetryWidget{
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.buttonRetry.setTitle(loc("Global.Retry"), for: .normal)
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 5.0
+    }
+    
+    static func show(message:String, onRetry: @escaping () -> Void){
         let widget = UINib(nibName: "RetryWidget", bundle: Bundle.main).instantiate(withOwner: nil, options: nil).first as! RetryWidget
         widget.labelErrorMessage.text = message
-        widget.retryHandler = retryHandler
+        widget.retryHandler = onRetry
         
-        return widget
+        DynamicModal.shared.show(modalView: widget)
     }
 
     @IBAction func retryTapped(_ sender: Any) {
-        self.retryHandler()
+        DynamicModal.shared.close { () in
+            self.retryHandler()
+        }
     }
 }

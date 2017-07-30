@@ -30,15 +30,14 @@ class QuestionDetailsViewController: UITableViewController, ChoiceDelegate {
     
     func loadQuestion(){
         let loadQuestionOperation = OperationGetQuestion(questionId: self.questionId!)
-        loadQuestionOperation.performOperation { (result:QuestionModel?, error:Error?) in
-            guard error == nil else{
-                print("An error occurred processing request: \(error!.localizedDescription)")
-                return
-            }
-            
+        loadQuestionOperation.performOperation(onSuccess: { (result:QuestionModel) in
             self.question = result
             self.tableView.reloadData()
             self.buttonShare.isEnabled = true
+        }) { (error:Error) in
+            RetryWidget.show(message: loc("Global.APINetworkError"), onRetry: {
+                self.loadQuestion()
+            })
         }
     }
     
@@ -109,19 +108,19 @@ class QuestionDetailsViewController: UITableViewController, ChoiceDelegate {
     func incrementVote(sender: ChoiceCell, completion: @escaping (ChoiceModel?) -> Void) {
         sender.choice.votes += 1
         let updateOperation = OperationUpdateQuestion(question: self.question!)
-        updateOperation.performOperation { (result:QuestionModel?, error:Error?) in
-            guard error == nil else{
-                print("An error occurred processing request: \(error!.localizedDescription)")
-                return
-            }
+        updateOperation.performOperation(onSuccess: { (result:QuestionModel) in
             // Reflect changes of the vote operation
-            for choice in result!.choices{
+            for choice in result.choices{
                 if choice.choice == sender.choice.choice{
                     sender.choice.votes = choice.votes
                     completion(choice)
                     break;
                 }
             }
+        }) { (error:Error) in
+            RetryWidget.show(message: loc("Global.APINetworkError"), onRetry: {
+                self.incrementVote(sender: sender, completion: completion)
+            })
         }
     }
     

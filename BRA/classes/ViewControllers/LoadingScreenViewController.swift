@@ -18,17 +18,12 @@ class LoadingScreenViewController: UIViewController {
 
     func validateServerHealth(){
         let healthStatusOperation = OperationGetHealthStatus()
-        healthStatusOperation.performOperation { (status:StatusModel?, error:Error?) in
-            guard error == nil else{
-                let v = RetryWidget.createWidget(message: loc("LoadingScreen.ServerStatusNotOK"), retryHandler: {
-                    DynamicModal.shared.close({ () in
-                        self.validateServerHealth()
-                    })
-                })
-                DynamicModal.shared.show(modalView: v)
-                return
-            }
+        healthStatusOperation.performOperation(onSuccess: { (status:StatusModel) in
             self.performSegue(withIdentifier: "Navigate to Question List", sender: nil)
+        }) { (error) in
+            RetryWidget.show(message: loc("LoadingScreen.ServerStatusNotOK"), onRetry: {
+                self.validateServerHealth()
+            })
         }
     }
 }

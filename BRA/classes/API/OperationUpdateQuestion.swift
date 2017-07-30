@@ -18,8 +18,8 @@ class OperationUpdateQuestion : APIOperation{
         super.init(request: request)
     }
     
-    func performOperation(completion:@escaping (_ result:QuestionModel?, _ error: Error?) -> Void) {
-        super.performOperation(completion: completion)
+    func performOperation(onSuccess:@escaping (_ result:QuestionModel) -> Void, onError:@escaping (_ error:Error) -> Void) {
+        super.performOperation(onSuccess: onSuccess, onError: onError)
     }
     
     override func createModel(data:JSON) -> Any{

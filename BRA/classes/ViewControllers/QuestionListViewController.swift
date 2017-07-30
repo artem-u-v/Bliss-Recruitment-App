@@ -52,20 +52,19 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
         
         let filterQuery = self.searchBar.text?.characters.count == 0 ? nil : self.searchBar.text
         let getQuestions = OperationListQuestions(offset: self.offset, limit: kNumberOfQuestionPerRequest, filter: filterQuery)
-        getQuestions.performOperation { (results:[QuestionModel]?, error:Error?) in
-            guard error == nil else{
-                print("An error occurred processing request: \(error!.localizedDescription)")
-                
-                return
-            }
+        getQuestions.performOperation(onSuccess: { (results:[QuestionModel]) in
             self.offset += kNumberOfQuestionPerRequest
-            self.questions += results!
+            self.questions += results
             self.isLoadingData = false
             self.tableView.reloadData()
             
             // This will ensure that additional number of records will be loaded
             // when the screen size fits more then default number of records (kNumberOfQuestionPerRequest)
             self.scrollViewDidScroll(self.tableView)
+        }) { (error:Error) in
+            RetryWidget.show(message: loc("Global.APINetworkError"), onRetry: {
+                self.loadQuestions()
+            })
         }
     }
     
