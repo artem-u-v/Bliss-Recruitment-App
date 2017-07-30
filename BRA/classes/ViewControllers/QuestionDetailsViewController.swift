@@ -102,6 +102,6 @@ class QuestionDetailsViewController: UITableViewController {
     
     // MARK: Actions
     func shareCurrentURL(){
-        print("Navigate to share URL")
+        self.performSegue(withIdentifier: "Share URL", sender: nil)
     }
 }
