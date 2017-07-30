@@ -2,6 +2,7 @@
   Localizable.strings[EN]
 */
 "Global.Ok" = "Ok";
+"Global.APINetworkError" = "An error occurred processing your request. Please try again.";
 
 "LoadingScreen.ServerStatusNotOK" = "Server status is not OK, please try again later.";
 "LoadingScreen.Retry" = "Retry";
