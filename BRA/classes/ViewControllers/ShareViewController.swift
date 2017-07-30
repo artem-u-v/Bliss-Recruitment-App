@@ -23,8 +23,6 @@ class ShareViewController: UITableViewController {
         self.tableView.register(ActivityCell.classForCoder(), forCellReuseIdentifier: "Loader Cell")
         self.textCell = self.tableView.dequeueReusableCell(withIdentifier: "Cell Text") as! TextCell
         self.textCell.textField.placeholder = loc("Share.Email")
-        
-        print("URL: ", shareURL)
     }
     
     // MARK: UITableViewDelegate & UITableViewDataSource

@@ -9,7 +9,6 @@
 import UIKit
 
 let kNumberOfEmptyRows = 4
-// TODO: Disssmis UISearchbar keyboard
 
 class QuestionListViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
