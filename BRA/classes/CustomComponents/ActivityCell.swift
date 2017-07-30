@@ -13,10 +13,22 @@ class ActivityCell : UITableViewCell {
     
     static var heightForActivityCell:CGFloat = 44.0
     
-    @IBOutlet weak var activity: UIActivityIndicatorView!
+    var activityLoader: UIActivityIndicatorView!
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.activityLoader = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        self.activityLoader.center = CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0)
+        self.activityLoader.startAnimating()
+        self.addSubview(self.activityLoader)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.activity.startAnimating()
+        self.activityLoader.startAnimating()
     }
 }
