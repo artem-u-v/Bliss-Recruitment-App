@@ -28,7 +28,13 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
         
         self.tableView.contentOffset = CGPoint(x: 0, y: self.searchBar.bounds.height)
         self.tableView.register(ActivityCell.classForCoder(), forCellReuseIdentifier: "Loader Cell")
-        self.loadQuestions()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.questions.count == 0{
+            self.loadQuestions()
+        }
     }
     
     func loadQuestions(){
@@ -47,6 +53,10 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
             self.questions += results!
             self.isLoadingData = false
             self.tableView.reloadData()
+            
+            // This will ensure that additional number of records will be loaded
+            // when the screen size fits more then default number of records (kNumberOfQuestionPerRequest)
+            self.scrollViewDidScroll(self.tableView)
         }
     }
     
@@ -127,7 +137,7 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
             vc.questionId = 5
         }else if segue.identifier == "Share URL" {
             let vc = (segue.destination as! UINavigationController).topViewController as! ShareViewController
-            var shareURL = "\(kSharingBaseURL)question_filter=\(sender as! String)"
+            var shareURL = "\(kSharingBaseURL)\(kSharingQuestionFilter)=\(sender as! String)"
             shareURL = shareURL.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
             vc.shareURL = shareURL
         }

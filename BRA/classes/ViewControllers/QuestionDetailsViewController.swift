@@ -112,7 +112,7 @@ class QuestionDetailsViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Share URL" {
             let vc = (segue.destination as! UINavigationController).topViewController as! ShareViewController
-            vc.shareURL = "\(kSharingBaseURL)question_id=\(self.question!.id)"
+            vc.shareURL = "\(kSharingBaseURL)\(kSharingQuestionId)=\(self.question!.id)"
         }
     }
 }
