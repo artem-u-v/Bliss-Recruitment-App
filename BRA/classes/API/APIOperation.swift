@@ -58,14 +58,6 @@ class APIOperation{
         }
     }
     
-    /*internal func performOperation<T : Any>(completion:@escaping (_ result:T?, _ error: Error?) -> Void) {
-        self.makeRequest { (result, error) in
-            DispatchQueue.main.async {
-                completion(result as? T, error)
-            }
-        }
-    }*/
-    
     // Hook methods
     internal func createModel(data:JSON) -> Any{
         preconditionFailure("Unimplemented Method: This method needs to be overriden by a concrete subscass")

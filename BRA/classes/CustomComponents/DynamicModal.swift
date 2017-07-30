@@ -7,6 +7,7 @@ import UIKit
 var _privateDynamicModal: DynamicModal?
 
 class DynamicModal: NSObject, UIGestureRecognizerDelegate {
+    var stackedPopUps = [UIView]()
     
     class var shared: DynamicModal{
         if _privateDynamicModal == nil{
@@ -28,7 +29,7 @@ class DynamicModal: NSObject, UIGestureRecognizerDelegate {
     }
     
     /* private properties */
-    fileprivate weak var view: UIView!
+    fileprivate var view: UIView!
     fileprivate var backgroundView: ModalRetainView! = ModalRetainView()
     
     /* internal functions */
@@ -39,6 +40,11 @@ class DynamicModal: NSObject, UIGestureRecognizerDelegate {
     }
     
     func show(modalView view: UIView) {
+        guard self.view == nil else {
+            self.stackedPopUps.append(view)
+            return
+        }
+        
         let inView = UIApplication.shared.delegate?.window! as UIView!
         
         self.view = view
@@ -70,8 +76,16 @@ class DynamicModal: NSObject, UIGestureRecognizerDelegate {
         self.fadeOutBackgroundView { () in
             self.backgroundView.removeFromSuperview()
             self.backgroundView.modal = nil
-            self.view = nil
+            if self.view != nil{
+                self.view.removeFromSuperview()
+                self.view = nil
+            }
             completion?()
+            
+            if self.stackedPopUps.count > 0{
+                let nextView = self.stackedPopUps.removeFirst()
+                DynamicModal.shared.show(modalView: nextView)
+            }
         }
     }
     
