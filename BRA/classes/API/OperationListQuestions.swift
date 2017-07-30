@@ -12,10 +12,10 @@ import SwiftyJSON
 class OperationListQuestions : APIOperation{    
     init(offset: Int, limit: Int, filter:String? = nil) {
         let request = APIRequestModel(operation: "questions")
-        request.appendArgument(name: "limit", value: String(limit))
-        request.appendArgument(name: "offset", value: String(offset))
+        request.appendQueryStringArgument(name: "limit", value: String(limit))
+        request.appendQueryStringArgument(name: "offset", value: String(offset))
         if filter != nil{
-            request.appendArgument(name: "filter", value: filter!)
+            request.appendQueryStringArgument(name: "filter", value: String(filter!))
         }
         super.init(request: request)
     }

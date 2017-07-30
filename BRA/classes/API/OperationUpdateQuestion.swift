@@ -1,5 +1,5 @@
 //
-//  OperationGetQuestion.swift
+//  OperationUpdateQuestion.swift
 //  BRA
 //
 //  Created by Artem Umanets on 28/07/2017.
@@ -9,10 +9,12 @@
 import Foundation
 import SwiftyJSON
 
-class OperationGetQuestion : APIOperation{
-    init(questionId: Int) {
+class OperationUpdateQuestion : APIOperation{
+    init(question: QuestionModel) {
         let request = APIRequestModel(operation: "questions")
-        request.appendQueryStringArgument(name: "question_id", value: String(questionId), argumentAsSubpath: true)
+        request.appendQueryStringArgument(name: "question_id", value: String(question.id), argumentAsSubpath: true)
+        request.postDataContentType = .json
+        request.postData = "Object data in JSON format"
         super.init(request: request)
     }
     

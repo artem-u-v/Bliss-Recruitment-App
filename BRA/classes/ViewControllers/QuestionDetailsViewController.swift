@@ -16,7 +16,7 @@ class QuestionDetailsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = loc("QuestionList.Title")
+        self.title = loc("QuestionDetails.Title")
         
         self.tableView.register(ActivityCell.classForCoder(), forCellReuseIdentifier: "Loader Cell")
         self.buttonShare = UIBarButtonItem(title: loc("QuestionDetails.Share"), style: .plain, target: self, action: #selector(shareCurrentURL))

@@ -11,9 +11,9 @@ import SwiftyJSON
 
 class OperationShare  : APIOperation{
     init(email: String, url:String) {
-        let request = APIRequestModel(operation: "share", argumentAsSubpath: false, method: .post)
-        request.appendArgument(name: "destination_email", value: String(email))
-        request.appendArgument(name: "content_url", value: String(url))
+        let request = APIRequestModel(operation: "share", method: .post)
+        request.appendQueryStringArgument(name: "destination_email", value: String(email))
+        request.appendQueryStringArgument(name: "content_url", value: String(url))
         super.init(request: request)
     }
     

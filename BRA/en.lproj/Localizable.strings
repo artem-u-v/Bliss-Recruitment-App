@@ -10,6 +10,7 @@
 "QuestionList.NoData" = "No Data";
 "QuestionList.Share" = "Share";
 
+"QuestionDetails.Title" = "Details";
 "QuestionDetails.PublishedDate" = "Published At";
 "QuestionDetails.Vote" = "Vote";
 "QuestionDetails.SectionChoices" = "Choices";
