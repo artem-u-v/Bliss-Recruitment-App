@@ -36,16 +36,14 @@ class APIRequestModel{
     
     func getRequest() -> URLRequest{
         var urlRequest : URLRequest!
-        
-        if self.method == .get{
-            url  = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-            urlRequest = URLRequest(url: URL(string: url)!)
-            if let contentType = self.postDataContentType{
-                urlRequest.addValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
-            }
-            if let postData = self.postData{
-                urlRequest.httpBody = postData.data(using: String.Encoding.utf8)
-            }
+        url  = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+        urlRequest = URLRequest(url: URL(string: url)!)
+
+        if let contentType = self.postDataContentType{
+            urlRequest.addValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
+        }
+        if let postData = self.postData{
+            urlRequest.httpBody = postData.data(using: String.Encoding.utf8)
         }
         urlRequest.httpMethod = self.method.rawValue
         return urlRequest

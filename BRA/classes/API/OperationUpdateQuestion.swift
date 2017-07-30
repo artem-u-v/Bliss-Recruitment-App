@@ -11,10 +11,10 @@ import SwiftyJSON
 
 class OperationUpdateQuestion : APIOperation{
     init(question: QuestionModel) {
-        let request = APIRequestModel(operation: "questions")
+        let request = APIRequestModel(operation: "questions", method: .put)
         request.appendQueryStringArgument(name: "question_id", value: String(question.id), argumentAsSubpath: true)
         request.postDataContentType = .json
-        request.postData = "Object data in JSON format"
+        request.postData = question.createJSONString()
         super.init(request: request)
     }
     

@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class ChoiceModel{
     let choice: String
-    let votes: Int
+    var votes: Int
     
     init(data: JSON){
         self.choice = data["choice"].stringValue
@@ -43,6 +43,26 @@ class QuestionModel{
             choices.append(ChoiceModel(data: choicesData))
         }
         self.choices = choices
+    }
+    
+    func createJSONString() -> String{
+        var choices = [JSON]()
+        for choice in self.choices{
+            choices.append(JSON(["choice" : choice.choice, "votes" : choice.votes]))
+        }
+        
+        let json = JSON([
+            "id" : JSON(self.id),
+            "image_url" : JSON(self.imageURL.absoluteString),
+            "thumb_url" : JSON(self.thumbURL.absoluteString),
+            "question" : JSON(self.question),
+            "choices" : JSON(choices)])
+        
+        let jsonData = try? json.rawData()
+        var jsonString = String(data: jsonData!, encoding: String.Encoding.utf8)!
+        jsonString = jsonString.replacingOccurrences(of: "\\/", with: "/")
+        
+        return jsonString
     }
     
     func printDescription(){
