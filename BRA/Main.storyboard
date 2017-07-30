@@ -355,7 +355,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(999)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rg3-4J-MTT">
-                                            <rect key="frame" x="262" y="11" width="33" height="21"/>
+                                            <rect key="frame" x="268" y="11" width="33" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="Tv0-Ag-fYV"/>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="lfh-re-4Of"/>
@@ -365,12 +365,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJo-Zl-HB0">
-                                            <rect key="frame" x="310" y="7" width="50" height="30"/>
+                                            <rect key="frame" x="316" y="0.0" width="44" height="44"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="jUr-IL-W9o"/>
-                                                <constraint firstAttribute="height" constant="30" id="rx1-xk-tI4"/>
+                                                <constraint firstAttribute="width" constant="44" id="jUr-IL-W9o"/>
+                                                <constraint firstAttribute="height" constant="44" id="rx1-xk-tI4"/>
                                             </constraints>
-                                            <state key="normal" title="Vote B"/>
+                                            <state key="normal" image="ButtonVote"/>
                                             <connections>
                                                 <action selector="voteTapped:" destination="Gcb-1A-J4y" eventType="touchUpInside" id="uHT-uZ-lbO"/>
                                             </connections>
@@ -384,17 +384,23 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FIk-a2-IK7">
+                                            <rect key="frame" x="328" y="12" width="20" height="20"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="rg3-4J-MTT" firstAttribute="centerY" secondItem="H83-oE-rCX" secondAttribute="centerY" id="3LZ-Ri-hgI"/>
                                         <constraint firstItem="zJo-Zl-HB0" firstAttribute="leading" secondItem="rg3-4J-MTT" secondAttribute="trailing" constant="15" id="Myl-fk-n84"/>
                                         <constraint firstItem="ZVj-xR-T3M" firstAttribute="leading" secondItem="H83-oE-rCX" secondAttribute="leading" constant="15" id="OE0-rM-xgk"/>
+                                        <constraint firstItem="FIk-a2-IK7" firstAttribute="centerY" secondItem="zJo-Zl-HB0" secondAttribute="centerY" id="YWe-Px-KPV"/>
+                                        <constraint firstItem="FIk-a2-IK7" firstAttribute="centerX" secondItem="zJo-Zl-HB0" secondAttribute="centerX" id="ZCO-Ju-3dp"/>
                                         <constraint firstItem="ZVj-xR-T3M" firstAttribute="centerY" secondItem="H83-oE-rCX" secondAttribute="centerY" id="b6c-us-cJR"/>
                                         <constraint firstAttribute="trailing" secondItem="zJo-Zl-HB0" secondAttribute="trailing" constant="15" id="bqJ-g3-FoK"/>
                                         <constraint firstItem="zJo-Zl-HB0" firstAttribute="centerY" secondItem="H83-oE-rCX" secondAttribute="centerY" id="fKt-nP-ddM"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="activityVote" destination="FIk-a2-IK7" id="wy0-40-HPt"/>
                                     <outlet property="buttonVote" destination="zJo-Zl-HB0" id="5y9-HN-7m2"/>
                                     <outlet property="labelTitle" destination="ZVj-xR-T3M" id="yCc-Sz-PGz"/>
                                     <outlet property="labelVoteCount" destination="rg3-4J-MTT" id="E0q-7m-ENi"/>
@@ -454,9 +460,10 @@
     </scenes>
     <resources>
         <image name="ButtonReload" width="60" height="60"/>
+        <image name="ButtonVote" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FUB-fe-KAV"/>
         <segue reference="eoS-GG-Ga1"/>
+        <segue reference="qy1-vq-zTr"/>
     </inferredMetricsTieBreakers>
 </document>

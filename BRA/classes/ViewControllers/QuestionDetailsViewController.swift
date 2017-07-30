@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuestionDetailsViewController: UITableViewController {
+class QuestionDetailsViewController: UITableViewController, ChoiceDelegate {
     
     var questionId: Int?
     var question : QuestionModel?
@@ -83,6 +83,7 @@ class QuestionDetailsViewController: UITableViewController {
                 }
             }else if indexPath.section == 1{
                 let choiceCell = tableView.dequeueReusableCell(withIdentifier: "Cell Choice") as! ChoiceCell
+                choiceCell.delegate = self
                 choiceCell.choice = self.question!.choices[indexPath.row]
                 cell = choiceCell
             }
@@ -102,6 +103,26 @@ class QuestionDetailsViewController: UITableViewController {
             return loc("QuestionDetails.SectionChoices")
         }
         return ""
+    }
+    
+    // MARK: ChoiceDelegate
+    func incrementVote(sender: ChoiceCell, completion: @escaping (ChoiceModel?) -> Void) {
+        sender.choice.votes += 1
+        let updateOperation = OperationUpdateQuestion(question: self.question!)
+        updateOperation.performOperation { (result:QuestionModel?, error:Error?) in
+            guard error == nil else{
+                print("An error occurred processing request: \(error!.localizedDescription)")
+                return
+            }
+            // Reflect changes of the vote operation
+            for choice in result!.choices{
+                if choice.choice == sender.choice.choice{
+                    sender.choice.votes = choice.votes
+                    completion(choice)
+                    break;
+                }
+            }
+        }
     }
     
     // MARK: Actions
