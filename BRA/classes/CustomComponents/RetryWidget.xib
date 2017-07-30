@@ -31,6 +31,13 @@
                         <action selector="retryTapped:" destination="UYS-LN-FkV" eventType="touchUpInside" id="Pzb-my-fwn"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6t7-ii-vxI" userLabel="Separator">
+                    <rect key="frame" x="0.0" y="94" width="280" height="0.5"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="tX9-vr-IIb"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -39,6 +46,9 @@
                 <constraint firstAttribute="width" constant="280" id="UL3-nG-FUI"/>
                 <constraint firstAttribute="bottom" secondItem="pAT-Rn-YrM" secondAttribute="bottom" constant="10" id="VkU-q7-cPm"/>
                 <constraint firstItem="Dke-e3-Phf" firstAttribute="leading" secondItem="UYS-LN-FkV" secondAttribute="leading" constant="10" id="Ywd-rq-4u9"/>
+                <constraint firstAttribute="trailing" secondItem="6t7-ii-vxI" secondAttribute="trailing" id="dUu-lM-JYf"/>
+                <constraint firstItem="6t7-ii-vxI" firstAttribute="leading" secondItem="UYS-LN-FkV" secondAttribute="leading" id="foQ-7C-MIM"/>
+                <constraint firstItem="pAT-Rn-YrM" firstAttribute="top" secondItem="6t7-ii-vxI" secondAttribute="bottom" constant="5" id="iVj-jD-bvH"/>
                 <constraint firstItem="Dke-e3-Phf" firstAttribute="top" secondItem="UYS-LN-FkV" secondAttribute="top" constant="10" id="mVU-Bm-N1a"/>
                 <constraint firstAttribute="height" constant="140" id="qXI-Ff-RbV"/>
                 <constraint firstAttribute="trailing" secondItem="Dke-e3-Phf" secondAttribute="trailing" constant="10" id="sX3-6n-AME"/>

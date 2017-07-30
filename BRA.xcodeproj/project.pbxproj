@@ -12,6 +12,8 @@
 		4F14DF701F2CF40900B2997A /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14DF6F1F2CF40900B2997A /* StatusModel.swift */; };
 		4F14DF731F2CF5F100B2997A /* OperationGetHealthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14DF721F2CF5F100B2997A /* OperationGetHealthStatus.swift */; };
 		4F14DF761F2CFA9000B2997A /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14DF751F2CFA9000B2997A /* LoadingScreenViewController.swift */; };
+		4F4FB59D1F2E4BE400A11F3C /* NoConnectivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FB59B1F2E4BE400A11F3C /* NoConnectivityWidget.swift */; };
+		4F4FB59E1F2E4BE400A11F3C /* NoConnectivityWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4FB59C1F2E4BE400A11F3C /* NoConnectivityWidget.xib */; };
 		4F7080EB1F2CFCF100BE8C6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F7080ED1F2CFCF100BE8C6A /* Localizable.strings */; };
 		4F7080F21F2CFD8B00BE8C6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7080F01F2CFD8B00BE8C6A /* LaunchScreen.storyboard */; };
 		4F7080F31F2CFD8B00BE8C6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7080F11F2CFD8B00BE8C6A /* Main.storyboard */; };
@@ -47,6 +49,8 @@
 		4F14DF6F1F2CF40900B2997A /* StatusModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusModel.swift; path = classes/API/StatusModel.swift; sourceTree = "<group>"; };
 		4F14DF721F2CF5F100B2997A /* OperationGetHealthStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OperationGetHealthStatus.swift; path = classes/API/OperationGetHealthStatus.swift; sourceTree = "<group>"; };
 		4F14DF751F2CFA9000B2997A /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingScreenViewController.swift; path = classes/ViewControllers/LoadingScreenViewController.swift; sourceTree = "<group>"; };
+		4F4FB59B1F2E4BE400A11F3C /* NoConnectivityWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoConnectivityWidget.swift; path = classes/CustomComponents/NoConnectivityWidget.swift; sourceTree = "<group>"; };
+		4F4FB59C1F2E4BE400A11F3C /* NoConnectivityWidget.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoConnectivityWidget.xib; path = classes/CustomComponents/NoConnectivityWidget.xib; sourceTree = "<group>"; };
 		4F7080EF1F2CFCFF00BE8C6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4F7080F01F2CFD8B00BE8C6A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F7080F11F2CFD8B00BE8C6A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 				4F8E531C1F2E365600C4D830 /* DynamicModal.swift */,
 				4F8E53221F2E375500C4D830 /* RetryWidget.xib */,
 				4F8E53241F2E376500C4D830 /* RetryWidget.swift */,
+				4F4FB59B1F2E4BE400A11F3C /* NoConnectivityWidget.swift */,
+				4F4FB59C1F2E4BE400A11F3C /* NoConnectivityWidget.xib */,
 				4F8323391F2D10BB00095BB6 /* ActivityCell.swift */,
 				4F83233D1F2DA90200095BB6 /* ImageCell.swift */,
 				4F8323421F2DAD8100095BB6 /* DateCell.swift */,
@@ -297,6 +303,7 @@
 				4F7080F21F2CFD8B00BE8C6A /* LaunchScreen.storyboard in Resources */,
 				4F8E53231F2E375500C4D830 /* RetryWidget.xib in Resources */,
 				4F7080EB1F2CFCF100BE8C6A /* Localizable.strings in Resources */,
+				4F4FB59E1F2E4BE400A11F3C /* NoConnectivityWidget.xib in Resources */,
 				4FFA93541F2B4AD900B77843 /* Assets.xcassets in Resources */,
 				4F7080F31F2CFD8B00BE8C6A /* Main.storyboard in Resources */,
 			);
@@ -374,6 +381,7 @@
 				4F8E53251F2E376500C4D830 /* RetryWidget.swift in Sources */,
 				4F8E531D1F2E365600C4D830 /* DynamicModal.swift in Sources */,
 				4FAD35CF1F2C9C0B003761FB /* Global.swift in Sources */,
+				4F4FB59D1F2E4BE400A11F3C /* NoConnectivityWidget.swift in Sources */,
 				4F14DF731F2CF5F100B2997A /* OperationGetHealthStatus.swift in Sources */,
 				4F83234D1F2DF51400095BB6 /* OperationUpdateQuestion.swift in Sources */,
 				4F8323431F2DAD8100095BB6 /* DateCell.swift in Sources */,

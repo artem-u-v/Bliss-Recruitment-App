@@ -49,7 +49,6 @@ class DynamicModal: NSObject, UIGestureRecognizerDelegate {
         self.backgroundView.addSubview(view)
         let constraint1 = NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal,
                                              toItem: self.backgroundView, attribute: .centerX, multiplier: 1, constant: 0)
-        
         let constraint2 = NSLayoutConstraint(item: view, attribute: .centerY, relatedBy: .equal,
                                              toItem: self.backgroundView, attribute: .centerY, multiplier: 1, constant: 0)
         self.backgroundView.addConstraint(constraint1)
@@ -59,8 +58,11 @@ class DynamicModal: NSObject, UIGestureRecognizerDelegate {
         self.fadeInBackgroundView(nil)
     }
     
-    func showLoader(){
-        self.show(modalView: FullScreenActivity())
+    func isCurrentView(view:UIView) -> Bool {
+        if self.view != nil && self.view == view{
+            return true
+        }
+        return false
     }
     
     func close(_ completion: ((Void) -> ())? = nil) {
@@ -121,24 +123,5 @@ private class ModalRetainView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.center = self.superview!.center
-    }
-}
-
-class FullScreenActivity: UIView {
-    var loader: UIActivityIndicatorView!
-    
-    init(){
-        super.init(frame: UIScreen.main.bounds)
-        self.loader = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        self.loader.hidesWhenStopped = false
-        self.loader.startAnimating()
-        self.addSubview(self.loader)
-    }
-    
-    required init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder) }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.loader.center = CGPoint(x: self.bounds.size.width / 2, y: self.bounds.size.height / 2)
     }
 }

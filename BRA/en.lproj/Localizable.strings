@@ -5,8 +5,9 @@
 "Global.APINetworkError" = "An error occurred processing your request. Please try again.";
 "Global.Retry" = "Retry";
 
-"LoadingScreen.ServerStatusNotOK" = "Server status is not OK, please try again later.";
+"NoConnectivity.Message" = "To continue using the app you must have active Internet connection.";
 
+"LoadingScreen.ServerStatusNotOK" = "Server status is not OK, please try again later.";
 
 "QuestionList.Title" = "Questions";
 "QuestionList.NoData" = "No Data";
