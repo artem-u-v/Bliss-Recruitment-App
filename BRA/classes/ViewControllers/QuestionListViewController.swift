@@ -27,6 +27,7 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
         self.buttonShare = UIBarButtonItem(title: loc("QuestionList.Share"), style: .plain, target: self, action: #selector(shareCurrentURL))
         
         self.tableView.contentOffset = CGPoint(x: 0, y: self.searchBar.bounds.height)
+        self.tableView.register(ActivityCell.classForCoder(), forCellReuseIdentifier: "Loader Cell")
         self.loadQuestions()
     }
     
@@ -65,7 +66,7 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
                 cell = tableView.dequeueReusableCell(withIdentifier: "Empty Cell")
             }else{
                 if self.isLoadingData{
-                    cell = tableView.dequeueReusableCell(withIdentifier: "Loading Cell")
+                    cell = tableView.dequeueReusableCell(withIdentifier: "Loader Cell")
                 }else{
                     cell = tableView.dequeueReusableCell(withIdentifier: "No Data Cell")
                     cell.textLabel?.text = loc("QuestionList.NoData")
@@ -77,7 +78,7 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
                 cell = tableView.dequeueReusableCell(withIdentifier: "Question Cell")
                 cell.textLabel?.text = String(question.id) + " " + question.question
             }else{
-                cell = tableView.dequeueReusableCell(withIdentifier: "Loading Cell")
+                cell = tableView.dequeueReusableCell(withIdentifier: "Loader Cell")
             }
         }
         return cell
@@ -86,7 +87,7 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row < self.questions.count{
             let question = self.questions[indexPath.row]
-            // TODO: Navigate to Questions Details
+            self.performSegue(withIdentifier: "Show Query Details", sender: question)
         }
     }
     
@@ -119,6 +120,14 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
     }
     
     // MARK: Utils
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show Query Details"{
+            let vc = segue.destination as! QuestionDetailsViewController
+            //vc.question = sender as? QuestionModel
+            vc.questionId = 5
+        }
+    }
+    
     func performSearch(){
         if self.searchBar.text != "" && self.navigationItem.rightBarButtonItem == nil{
             self.navigationItem.setRightBarButton(self.buttonShare, animated: true)

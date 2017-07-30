@@ -8,3 +8,8 @@
 "QuestionList.Title" = "Questions";
 "QuestionList.NoData" = "No Data";
 "QuestionList.Share" = "Share";
+
+"QuestionDetails.PublishedDate" = "Published At";
+"QuestionDetails.Vote" = "Vote";
+"QuestionDetails.SectionChoices" = "Choices";
+"QuestionDetails.Share" = "Share";
