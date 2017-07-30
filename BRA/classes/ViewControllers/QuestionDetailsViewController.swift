@@ -12,15 +12,18 @@ class QuestionDetailsViewController: UITableViewController {
     
     var questionId: Int?
     var question : QuestionModel?
+    var buttonShare : UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = loc("QuestionList.Title")
         
         self.tableView.register(ActivityCell.classForCoder(), forCellReuseIdentifier: "Loader Cell")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: loc("QuestionDetails.Share"), style: .plain, target: self, action: #selector(shareCurrentURL))
+        self.buttonShare = UIBarButtonItem(title: loc("QuestionDetails.Share"), style: .plain, target: self, action: #selector(shareCurrentURL))
+        self.navigationItem.rightBarButtonItem = self.buttonShare
         
         if (self.question == nil){
+            self.buttonShare.isEnabled = false
             self.loadQuestion()
         }
     }
@@ -35,6 +38,7 @@ class QuestionDetailsViewController: UITableViewController {
             
             self.question = result
             self.tableView.reloadData()
+            self.buttonShare.isEnabled = true
         }
     }
     
@@ -103,5 +107,12 @@ class QuestionDetailsViewController: UITableViewController {
     // MARK: Actions
     func shareCurrentURL(){
         self.performSegue(withIdentifier: "Share URL", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Share URL" {
+            let vc = (segue.destination as! UINavigationController).topViewController as! ShareViewController
+            vc.shareURL = "\(kSharingBaseURL)question_id=\(self.question!.id)"
+        }
     }
 }

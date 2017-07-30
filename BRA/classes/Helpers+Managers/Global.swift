@@ -8,14 +8,14 @@
 
 import Foundation
 
+/* URL's */
 let APIEndpointURL: String = "https://private-anon-60cd111e9f-blissrecruitmentapi.apiary-mock.com/"
-
+let kSharingBaseURL : String = "blissrecruitment://questions?"
 
 /* ERRORS */
 let kErrorDomain = "bra.network"
 let kErrorNetworkNoData = 1
 let kErrorNetworkParsingJSON = 2
-
 
 /* UI */
 let kAnimationSpeed = 0.4

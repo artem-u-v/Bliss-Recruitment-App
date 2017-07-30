@@ -9,6 +9,7 @@
 import UIKit
 
 class ShareViewController: UITableViewController {
+    var shareURL : String!
     
     var isShared : Bool = false
     var isSharing : Bool = false
@@ -22,6 +23,8 @@ class ShareViewController: UITableViewController {
         self.tableView.register(ActivityCell.classForCoder(), forCellReuseIdentifier: "Loader Cell")
         self.textCell = self.tableView.dequeueReusableCell(withIdentifier: "Cell Text") as! TextCell
         self.textCell.textField.placeholder = loc("Share.Email")
+        
+        print("URL: ", shareURL)
     }
     
     // MARK: UITableViewDelegate & UITableViewDataSource
@@ -80,7 +83,7 @@ class ShareViewController: UITableViewController {
         self.isSharing = true
         self.tableView.reloadData()
         
-        let shareOperation = OperationShare(email: self.textCell.textField.text!, url: "url de teste")
+        let shareOperation = OperationShare(email: self.textCell.textField.text!, url: self.shareURL)
         shareOperation.performOperation { (status:StatusModel?, error:Error?) in
             guard error == nil else{
                 print("An error occurred processing request: \(error!.localizedDescription)")

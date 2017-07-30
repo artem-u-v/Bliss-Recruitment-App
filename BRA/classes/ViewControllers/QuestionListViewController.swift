@@ -116,7 +116,7 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func shareCurrentURL(){
-        print("Navigate to share URL")
+        self.performSegue(withIdentifier: "Share URL", sender: self.searchBar.text)
     }
     
     // MARK: Utils
@@ -125,6 +125,11 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
             let vc = segue.destination as! QuestionDetailsViewController
             //vc.question = sender as? QuestionModel
             vc.questionId = 5
+        }else if segue.identifier == "Share URL" {
+            let vc = (segue.destination as! UINavigationController).topViewController as! ShareViewController
+            var shareURL = "\(kSharingBaseURL)question_filter=\(sender as! String)"
+            shareURL = shareURL.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+            vc.shareURL = shareURL
         }
     }
     

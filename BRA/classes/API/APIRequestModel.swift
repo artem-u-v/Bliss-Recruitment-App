@@ -30,6 +30,7 @@ class APIRequestModel{
         
         if self.method == .get{
             url.append(self.getArgumentsList())
+            url  = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
             urlRequest = URLRequest(url: URL(string: url)!)
         }else if self.method == .post{
             urlRequest = URLRequest(url: URL(string: url)!)
@@ -66,25 +67,6 @@ class APIRequestModel{
         }
         return arguments
     }
-    
-    /*private var requestURLforMethodPOST : URL{
-        get{
-            var url = "\(APIEndpointURL)\(self.operation)"
-            return URL(string: url)
-        }
-    }
-    
-    private var requestURLforMethodGET : URL{
-        get{
-            var url = "\(APIEndpointURL)\(self.operation)"
-            if self.method == .get && self.argumentAsSubpath && self.arguments.count == 1{
-                url.append("/\(self.arguments[0].value)")
-            }else{
-                url.append(self.getArgumentsList())
-            }
-            return URL(string: url)!
-        }
-    }*/
     
     init(operation: String, argumentAsSubpath:Bool = false, method:OperationMethod = .get) {
         self.operation = operation

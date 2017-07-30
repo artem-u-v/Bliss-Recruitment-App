@@ -162,6 +162,7 @@
                     <connections>
                         <outlet property="searchBar" destination="biy-pv-CbM" id="2gi-wv-2iJ"/>
                         <segue destination="wka-Oa-EeU" kind="show" identifier="Show Query Details" id="leE-GU-BS4"/>
+                        <segue destination="Hga-et-7dD" kind="presentation" identifier="Share URL" id="FUB-fe-KAV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PpD-J6-mAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -453,4 +454,7 @@
     <resources>
         <image name="ButtonReload" width="60" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="FUB-fe-KAV"/>
+    </inferredMetricsTieBreakers>
 </document>
