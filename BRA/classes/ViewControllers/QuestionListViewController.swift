@@ -9,13 +9,14 @@
 import UIKit
 
 let kNumberOfEmptyRows = 4
+// TODO: Disssmis UISearchbar keyboard
 
 class QuestionListViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     var buttonShare: UIBarButtonItem!
+    var questionFilter: String?
     
     var timerSearch : Timer?
-    var query : String = ""
     var isLoadingData: Bool = false
     var offset : Int = 0
 
@@ -26,14 +27,22 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
         self.title = loc("QuestionList.Title")
         self.buttonShare = UIBarButtonItem(title: loc("QuestionList.Share"), style: .plain, target: self, action: #selector(shareCurrentURL))
         
-        self.tableView.contentOffset = CGPoint(x: 0, y: self.searchBar.bounds.height)
         self.tableView.register(ActivityCell.classForCoder(), forCellReuseIdentifier: "Loader Cell")
+        
+        if let filter = self.questionFilter{
+            self.searchBar.text = filter
+            if filter == ""{
+                self.searchBar.becomeFirstResponder()
+            }
+        }else{
+            self.tableView.contentOffset = CGPoint(x: 0, y: self.searchBar.bounds.height)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if self.questions.count == 0{
-            self.loadQuestions()
+            self.performSearch()
         }
     }
     
@@ -133,11 +142,13 @@ class QuestionListViewController: UITableViewController, UISearchBarDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show Query Details"{
             let vc = segue.destination as! QuestionDetailsViewController
-            //vc.question = sender as? QuestionModel
-            vc.questionId = 5
+            vc.question = sender as? QuestionModel
+        }else if segue.identifier == "Show Query Details for Question ID"{
+            let vc = segue.destination as! QuestionDetailsViewController
+            vc.questionId = sender as? Int
         }else if segue.identifier == "Share URL" {
             let vc = (segue.destination as! UINavigationController).topViewController as! ShareViewController
-            var shareURL = "\(kSharingBaseURL)\(kSharingQuestionFilter)=\(sender as! String)"
+            var shareURL = "\(kSharingBaseURL)?\(kSharingQuestionFilter)=\(sender as! String)"
             shareURL = shareURL.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
             vc.shareURL = shareURL
         }

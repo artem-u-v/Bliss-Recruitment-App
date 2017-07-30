@@ -10,7 +10,7 @@ import Foundation
 
 /* URL's */
 let APIEndpointURL: String = "https://private-anon-60cd111e9f-blissrecruitmentapi.apiary-mock.com/"
-let kSharingBaseURL : String = "blissrecruitment://questions?"
+let kSharingBaseURL : String = "blissrecruitment://questions"
 let kSharingQuestionFilter : String = "question_filter"
 let kSharingQuestionId : String = "question_id"
 

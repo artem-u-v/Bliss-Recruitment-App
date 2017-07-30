@@ -88,7 +88,7 @@
         <scene sceneID="HxC-mn-gNt">
             <objects>
                 <tableViewController id="htR-m6-dyg" customClass="QuestionListViewController" customModule="BRA" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bc0-tk-gxs">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bc0-tk-gxs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,6 +163,7 @@
                         <outlet property="searchBar" destination="biy-pv-CbM" id="2gi-wv-2iJ"/>
                         <segue destination="wka-Oa-EeU" kind="show" identifier="Show Query Details" id="leE-GU-BS4"/>
                         <segue destination="Hga-et-7dD" kind="presentation" identifier="Share URL" id="FUB-fe-KAV"/>
+                        <segue destination="wka-Oa-EeU" kind="show" identifier="Show Query Details for Question ID" animates="NO" id="eoS-GG-Ga1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PpD-J6-mAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -417,7 +418,7 @@
         <!--Navigation Controller-->
         <scene sceneID="zsi-QM-oJg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XKA-xe-urx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Question List Controller" automaticallyAdjustsScrollViewInsets="NO" id="XKA-xe-urx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oUT-Gd-FQV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -456,5 +457,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FUB-fe-KAV"/>
+        <segue reference="eoS-GG-Ga1"/>
     </inferredMetricsTieBreakers>
 </document>

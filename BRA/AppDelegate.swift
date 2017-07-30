@@ -59,6 +59,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }*/
         return true
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Question List Controller") as! UINavigationController
+        
+        
+        let queryString = url.absoluteString.replacingOccurrences(of: kSharingBaseURL, with: "").replacingOccurrences(of: "?", with: "").removingPercentEncoding!
+        var parameterValue = ""
+        if queryString.contains(kSharingQuestionFilter){
+            // Navigate to Question List with filter option
+            parameterValue = queryString.replacingOccurrences(of: "\(kSharingQuestionFilter)=", with: "")
+            
+            (vc.topViewController as! QuestionListViewController).questionFilter = parameterValue
+            self.window?.rootViewController = vc
+            return true
+        }else if queryString.contains(kSharingQuestionId){
+            // Navigate to Question Details
+            parameterValue = queryString.replacingOccurrences(of: "\(kSharingQuestionId)=", with: "")
+            if Int(parameterValue) == nil{
+                // if the question_id value is empty navigate to question list
+                self.window?.rootViewController = vc
+                return true
+            }
+            (vc.topViewController as!QuestionListViewController).performSegue(withIdentifier: "Show Query Details for Question ID", sender: Int(parameterValue))
+            self.window?.rootViewController = vc
+        }else{
+            // Navigate to Question List without filter option
+            self.window?.rootViewController = vc
+            return true
+        }
+        return false
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
