@@ -1,13 +1,13 @@
 # Bliss-Recruitment-App
 
 ## Requirements
-⋅⋅* Xcode 8.3
-⋅⋅* iOS 9.0
-⋅⋅* Swift 3.1
++ Xcode 8.3
++ iOS 9.0
++ Swift 3.1
 
 ## Dependencies
-⋅⋅* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - SwiftyJSON makes it easy to deal with JSON data in Swift.
-⋅⋅* [ReachabilitySwift](https://github.com/ashleymills/Reachability.swift) - Reachability.swift is a replacement for Apple's Reachability sample, re-written in Swift with closures.
++ [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - SwiftyJSON makes it easy to deal with JSON data in Swift.
++ [ReachabilitySwift](https://github.com/ashleymills/Reachability.swift) - Reachability.swift is a replacement for Apple's Reachability sample, re-written in Swift with closures.
 
 ## Initial configuration
 This project uses [cocoapods](https://cocoapods.org), the following steps will explain how to quickly and easily setup the project environment:
